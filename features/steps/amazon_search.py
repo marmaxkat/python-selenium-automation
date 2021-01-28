@@ -6,6 +6,6 @@ def open_amazon(context):
     context.driver.get('https://www.amazon.com/')
 
 @when('Input Watches into Amazon search field')
-def input_search(context)
+def input_search(context):
     search_field = context.driver.find_element(By.ID,'twotabsearchtextbox')
     search_field.send_keys('Watches')
