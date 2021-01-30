@@ -22,4 +22,4 @@ def click_orders_button(context):
 @then('Verify Sign in page opened')
 def verify_sign_in_page_opened(context):
     sign_in_text = context.driver.find_element(By.XPATH, "//h1[contains(@class,'a-spacing-small')]").text
-    assert 'Sign-In' in sign_in_text
+    assert 'Hello, Sign in' in sign_in_text, f"Expected 'Hello, Sign in' is not in '{sign_in_text}'"
