@@ -20,6 +20,6 @@ sleep(4)
 driver.find_element(By.XPATH, "//input[@type='search']").send_keys(Keys.ENTER)
 
 # verify
-assert 'Cancel Items or Orders' in driver.find_element(By.XPATH, "//div[contains(@class,'help-content')]").text
+assert 'Cancel Items or Orders' in driver.find_element(By.XPATH, "//div[contains(@class,'help-content')]/h1").text
 
 driver.quit()

@@ -7,3 +7,4 @@ Feature: Amazon Search Test
     When Input Watches into Amazon search field
     And Click on Amazon search icon
     Then Product results for Watches are shown
+    And Page URL has Wathes in it
