@@ -1,0 +1,19 @@
+$$("i[aria-label='Amazon']")
+
+$$("div.a-box-inner > h1")
+
+$$("input[name='customerName']")
+
+$$("input[type='email']")
+
+$$('input#ap_password')
+
+$$('input#ap_password_check')
+
+$$("input[type='submit']")
+
+$$("a[href*='ap_register_notification_condition_of_use']")
+
+$$("a[href*='ap_register_notification_privacy_notice']")
+
+$$("a[href*='openid.pape.max_auth_age']")
