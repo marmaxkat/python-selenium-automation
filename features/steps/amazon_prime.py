@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from time import sleep
 
 
-BENEFIT_BOXES = (By.CSS_SELECTOR, '.benefit_box')
+BENEFIT_BOXES = (By.CSS_SELECTOR, '.benefit-box')
 
 
 @given('Open Amazon Prime page')
@@ -11,8 +12,6 @@ def open_amazon_prime(context):
 
 
 @then('Verify {expected_boxes} benefit boxes are displayed')
-def verify__boxes_(context, expected_boxes):
+def verify_boxes(context, expected_boxes):
     actual_boxes = context.driver.find_elements(*BENEFIT_BOXES)
-    assert len(actual_boxes) == expected_boxes, f'Expected {expected_boxes}, but we see {len(actual_boxes)}'
-
-
+    assert len(actual_boxes) == int(expected_boxes), f'Expected {expected_boxes}, but we see {len(actual_boxes)}'

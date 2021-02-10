@@ -1,12 +1,13 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from time import sleep
 
 HAM_MENU = (By.ID,'nav-hamburger-menu')
 
 @then('Verify hamburger menu icon visible')
 def verify_ham_menu_present(context):
     print('Find Element')
-    element=context.driver.find_element(*HAM_MENU)
+    element = context.driver.find_element(*HAM_MENU)
     print(element)
     print(type(element))
 

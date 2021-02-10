@@ -15,6 +15,7 @@ def open_amazon(context):
 def input_amazon_search(context, search_query):
     search_field = context.driver.find_element(*SEARCH_FIELD)
     search_field.send_keys(search_query)
+    context.driver.find_element(*SEARCH_ICON).click()
 
 
 @when('Click on Amazon search icon')
