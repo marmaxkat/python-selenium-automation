@@ -31,12 +31,25 @@ def verify_cart_count(context, expected_count):
     assert expected_count == cart_count, f'Expeced {expected_count} items, but got {cart_count} items'
 
 
-@then('Verify user can click through color')
-def verify_can_select_colors(context):
-    expected_colors = ['Emerald', 'Ivory', 'Navy']
+# @then('Verify user can click through color')
+# def verify_can_select_colors(context):
+#     expected_colors = ['Emerald', 'Ivory', 'Navy']
+#     colors = context.driver.find_elements(*COLOR_OPTIONS)
+#
+#     for i in range(len(colors)):
+#         colors[i].click()
+#         selected_color = context.driver.find_element(*SELECTED_COLOR).text
+#         assert expected_colors[i] == selected_color, f'Expected {expected_colors[i]}, but got {selected_color}'
+#
+
+@then("Verify user can click through {color_list} colors")
+def verify_can_select_colors(context, color_list):
+    expected_colors = list(color_list.split(","))
+    print(expected_colors)
     colors = context.driver.find_elements(*COLOR_OPTIONS)
 
     for i in range(len(colors)):
         colors[i].click()
+        print(expected_colors[i])
         selected_color = context.driver.find_element(*SELECTED_COLOR).text
         assert expected_colors[i] == selected_color, f'Expected {expected_colors[i]}, but got {selected_color}'

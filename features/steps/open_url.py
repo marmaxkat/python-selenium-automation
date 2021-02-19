@@ -24,3 +24,8 @@ def open_amazon_prime(context):
 @given('Open Amazon Dress B07K16R9V3 page')
 def open_amazon_B07K16R9V3_page(context):
     context.driver.get('https://www.amazon.com/gp/product/B07JZTT5LX')
+
+
+@given("Open Amazon {url_query} page")
+def open_product_page(context, url_query):
+    context.driver.get(url_query)
