@@ -1,13 +1,14 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
+from selenium.webdriver.support import expected_conditions as EC
 
 
-PRODUCT_BOX = (By.CLASS_NAME, 'a-section')
 COLOR_OPTION = (By.ID, 'color_name_1')
 
 
 @when('Select color')
 def add_to_cart_btn_click(context):
-    context.driver.find_element(By.ID, 'add-to-cart-button')
-    sleep(4)
+    e = context.driver.wait.until(EC.element_to_be_clickable(COLOR_OPTION))
+    e.click()
+    # sleep(4)

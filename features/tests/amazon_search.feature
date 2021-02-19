@@ -21,7 +21,7 @@ Feature: Amazon Search Test
     And Click on Add to cart button
     Then Verify cart has 1 item
 
-    Scenario: User can add product to the cart
+  Scenario: User can add product to the cart
     Given Open Amazon page
     When Input shoes into Amazon search field
     And Click on first product

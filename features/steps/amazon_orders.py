@@ -1,11 +1,7 @@
-from behave import given, when
+from behave import when, then
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-
-@given('Open Amazon main page')
-def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
 
 
 @when('Verify user logged out')

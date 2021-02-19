@@ -1,14 +1,8 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
 
 
 BENEFIT_BOXES = (By.CSS_SELECTOR, '.benefit-box')
-
-
-@given('Open Amazon Prime page')
-def open_amazon_prime(context):
-    context.driver.get('https://www.amazon.com/amazonprime')
 
 
 @then('Verify {expected_boxes} benefit boxes are displayed')

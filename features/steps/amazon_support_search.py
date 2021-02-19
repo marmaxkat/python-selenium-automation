@@ -7,10 +7,6 @@ SEARCH_HELP_INPUT = (By.XPATH, "//input[@id='helpsearch']")
 ENTER_BTN = (By.XPATH, "//input[@type='search']")
 RESULTS = (By.XPATH, "//div[contains(@class,'help-content')]/h1")
 
-@given('Open Amazon Help page')
-def open_amazon_help(context):
-    context.driver.get(' https://www.amazon.com/gp/help/customer/display.html')
-
 
 @when('Input {search text} into search field')
 def input_support_search(context, search_text):
@@ -22,7 +18,6 @@ def input_support_search(context, search_text):
 @when('Click Enter')
 def click_enter(context):
     context.driver.find_element(*ENTER_BTN).send_keys(Keys.ENTER)
-    sleep(1)
 
 
 @then('Verify that {result_text} text is present')
