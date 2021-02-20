@@ -21,6 +21,11 @@ def open_amazon_prime(context):
     context.driver.get('https://www.amazon.com/amazonprime')
 
 
+@given('Open Amazon Wholefoods page')
+def open_amazon_prime(context):
+    context.driver.get('https://www.amazon.com/wholefoodsdeals')
+
+
 @given('Open Amazon Dress B07K16R9V3 page')
 def open_amazon_B07K16R9V3_page(context):
     context.driver.get('https://www.amazon.com/gp/product/B07JZTT5LX')
