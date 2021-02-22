@@ -1,4 +1,7 @@
-def first_non_unic_letter(str1):
+def first_non_unic_letter(str1:str):
+  if not str1:
+    raise ValueError
+
   letter_order = []
   ctr = {}
   for i in str1.lower():
