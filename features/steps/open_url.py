@@ -36,6 +36,11 @@ def open_amazon_B07K16R9V3_page(context):
     context.driver.get('https://www.amazon.com/dkfkf')
 
 
+@given('Open Amazon T&C page')
+def open_amazon_B07K16R9V3_page(context):
+    context.driver.get('https://www.amazon.com/gp/help/customer/display.html/ref=ap_register_notification_condition_of_use?ie=UTF8&nodeId=508088')
+
+
 @given("Open Amazon {url_query} page")
 def open_product_page(context, url_query):
     context.driver.get(url_query)
