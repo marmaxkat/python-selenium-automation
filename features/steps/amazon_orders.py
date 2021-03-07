@@ -3,19 +3,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
+@given('Open Amazon page')
+def open_amazon(context):
+    context.app.main_page.open_main_page()
 
 @when('Verify user logged out')
 def verify_user_logged_out(context):
-    sign_text = context.driver.find_element(By.XPATH, "//div[contains(@class,'nav-line-1-container')]").text
-    assert 'Hello, Sign in' in sign_text
+    context.app.amazon_top_menu.verify_user_logged_out()
 
 
 @when('Click Orders')
 def click_orders_button(context):
-    orders_button = context.driver.find_element(By.ID, 'nav-orders')
-    orders_button.send_keys(Keys.ENTER)
+    context.app.amazon_top_menu.click_order_button()
 
 @then('Verify Sign in page opened')
 def verify_sign_in_page_opened(context):
-    sign_in_text = context.driver.find_element(By.XPATH, "//h1[contains(@class,'a-spacing-small')]").text
-    assert 'Hello, Sign in' in sign_in_text, f"Expected 'Hello, Sign in' is not in '{sign_in_text}'"
+   context.app.sign_in_page.verify_title_text('Sign-In')
