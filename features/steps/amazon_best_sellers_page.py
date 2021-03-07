@@ -6,6 +6,7 @@ import time
 
 BS_PAGE_TOP_LINKS = (By.CSS_SELECTOR, "#zg_tabs a")
 BS_LINK = (By.CSS_SELECTOR, "a[href='/gp/bestsellers/?ref_=nav_cs_bestsellers_22595f4f23134e4aa687cca616dd2701']")
+HEADER = (By.CSS_SELECTOR, "#zg_banner_text_wrapper")
 
 
 @when('Click on Best Sellers link')
@@ -28,17 +29,15 @@ def store_original_window(context):
 @then('Clicks on each top link and verify that new page opens')
 def click_on_top_links(context):
     top_links = context.driver.find_elements(*BS_PAGE_TOP_LINKS)
-    num_links = len(top_links)
-    for link in range(0, num_links):
-        context.driver.wait.until(EC.element_to_be_clickable(top_links[link]))
-        top_links[link].click()
-        context.driver.wait.until(EC.new_window_is_opened)
-        context.driver.switch_to.window(context.driver.window_handles[link])
-        new_window_title = context.driver.title
-        print(new_window_title)
 
-        context.driver.close()
-        context.driver.switch_to.window(context.original_window)
+    for x in range(len(top_links)):
+        link = context.driver.find_elements(*BS_PAGE_TOP_LINKS)[x]
+
+        link_text = link.text
+        link.click()
+
+        header_text = context.driver.find_element(*HEADER).text
+        assert link_text in header_text, f'Expected {link_text} not in{header_text}'
 
 
 # @then('Verify there are 5 links')

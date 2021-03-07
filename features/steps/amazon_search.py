@@ -8,28 +8,24 @@ RESULT = (By.XPATH, "//span[@class='a-color-state a-text-bold']")
 
 @given('Open Amazon')
 def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
+    context.app.main_page.open_main_page()
 
 
 @when('Input {search_query} into Amazon search field')
 def input_amazon_search(context, search_query):
-    search_field = context.driver.find_element(*SEARCH_FIELD)
-    search_field.send_keys(search_query)
-    context.driver.find_element(*SEARCH_ICON).click()
+    context.app.main_page.input_amazon_search(search_query)
 
 
 @when('Click on Amazon search icon')
 def click_amazon_icon(context):
-    context.driver.find_element(*SEARCH_ICON).click()
+    context.app.main_page.click_search_amazon()
 
 
 @then('Product results for {result_word} are shown successfully')
 def verify_search_result(context, result_word):
-    actual_text = context.driver.find_element(*RESULT).text
-    expected_text = f'{result_word}'
-    assert expected_text == actual_text, f'Expected {expected_text}, but got {actual_text}'
+    context.app.search_result_page.verify_search_result(result_word)
 
 
 @then('Page URL has {query} in it')
-def verify_url_contents_query(context, query):
-    assert query in context.driver.current_url, f'{query} in {context.driver.current_url}'
+def verify_url_contains_query(context, query):
+    context.app.main_page.verify_url_contains_query(query)
