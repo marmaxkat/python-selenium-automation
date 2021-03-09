@@ -2,15 +2,16 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
-
-ADD_TO_CART_BTN = (By.ID, 'add-to-cart-button')
-CART = (By.ID, 'nav-cart-count')
 SIZE_TOOLTIP = (By.ID, 'a-popover-content-1')
 SIZE_SELECTION_BTN = (By.ID, 'dropdown_selected_size_name')
 SIZE_OPTION_0 = (By.ID, 'size_name_0')
-
 COLOR_OPTIONS = (By.CSS_SELECTOR, '#variation_color_name li')
 SELECTED_COLOR = (By.CSS_SELECTOR, '#variation_color_name .selection')
+
+
+@when('Select color')
+def select_watch_color(context):
+    context.app.product_page.select_color()
 
 
 @when('Select shoes size')
@@ -22,13 +23,12 @@ def select_size(context):
 
 @when('Click on Add to cart button')
 def add_to_cart_btn_click(context):
-    context.driver.find_element(*ADD_TO_CART_BTN).click()
+    context.app.product_page.click_add_to_cart()
 
 
 @then('Verify cart has {expected_count} item')
 def verify_cart_count(context, expected_count):
-    cart_count = context.driver.find_element(*CART).text
-    assert expected_count == cart_count, f'Expeced {expected_count} items, but got {cart_count} items'
+    context.app.product_page.verify_cart_count(expected_count)
 
 
 # @then('Verify user can click through color')

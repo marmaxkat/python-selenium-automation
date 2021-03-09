@@ -3,6 +3,7 @@ from pages.search_result_page import SearchResultPage
 from pages.amazon_top_menu import TopMenu
 from pages.sign_in_page import SignIn
 from pages.shopping_cart_page import ShoppingCart
+from pages.product_page import ProductPage
 
 
 class Application:
@@ -14,4 +15,5 @@ class Application:
         self.amazon_top_menu = TopMenu(self.driver)
         self.sign_in_page = SignIn(self.driver)
         self.shopping_cart_page = ShoppingCart(self.driver)
+        self.product_page = ProductPage(self.driver)
 
