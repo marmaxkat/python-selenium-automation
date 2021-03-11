@@ -1,5 +1,4 @@
-from support.get_env import get_env_var
-
+from support.environment import ENV
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -8,7 +7,7 @@ class Page:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
-        self.base_url = f'https://{get_env_var}.amazon.com/'
+        self.base_url = ENV.base_url()
 
     def click(self, *locator):
         self.driver.find_element(*locator).click()

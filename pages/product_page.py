@@ -9,6 +9,7 @@ class ProductPage(Page):
     COLOR_OPTION = (By.ID, 'color_name_0')
 
     def click_add_to_cart(self):
+        self.wait_for_element_appear(*self.ADD_TO_CART_BTN)
         self.click(*self.ADD_TO_CART_BTN)
 
     def select_color(self):
