@@ -23,8 +23,14 @@ Feature: Amazon Search Test
 
   Scenario: User can add product to the cart
     Given Open Amazon page
-    When Input shoes into Amazon search field
-    And Click on first product
+     And Click on first product
     And Select shoes size
     And Click on Add to cart button
     Then Verify cart has 1 item
+
+
+  Scenario: User can select and search in a department
+    Given Open Amazon page
+    When Select department by alias stripbooks
+    And Seasch for Faust
+    Then Verify books department is selected

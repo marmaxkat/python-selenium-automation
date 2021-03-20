@@ -16,9 +16,20 @@ def input_amazon_search(context, search_query):
     context.app.main_page.input_amazon_search(search_query)
 
 
+@when('Seasch for {search_query}')
+def input_amazon_search(context, search_query):
+    context.app.main_page.input_amazon_search(search_query)
+    context.app.main_page.click_search_amazon()
+
+
 @when('Click on Amazon search icon')
 def click_amazon_icon(context):
     context.app.main_page.click_search_amazon()
+
+
+@when('Select department by alias {alias}')
+def select_department(context, alias):
+    context.app.main_page.select_department(alias)
 
 
 @then('Product results for {result_word} are shown successfully')
@@ -29,3 +40,8 @@ def verify_search_result(context, result_word):
 @then('Page URL has {query} in it')
 def verify_url_contains_query(context, query):
     context.app.main_page.verify_url_contains_query(query)
+
+
+@then('Verify books department is selected')
+def verify_department(context):
+    context.app.search_result_page.verify_department()
