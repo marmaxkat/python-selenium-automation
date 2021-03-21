@@ -42,6 +42,6 @@ def verify_url_contains_query(context, query):
     context.app.main_page.verify_url_contains_query(query)
 
 
-@then('Verify books department is selected')
-def verify_department(context):
-    context.app.search_result_page.verify_department()
+@then('Verify {departments} department is selected')
+def verify_department(context, departments):
+    context.app.search_result_page.verify_department(departments)

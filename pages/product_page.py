@@ -12,7 +12,7 @@ class ProductPage(Page):
     PRICE_BY_BOX = (By.ID, 'unifiedPrice_feature_div')
     COLOR_OPTION = (By.ID, 'color_name_0')
     NEW_ARRIVALS_LINK = (By.CSS_SELECTOR, '#nav-subnav > a:nth-child(7)')
-    NEW_ARRIVALS_PRODUCTS = (By.CSS_SELECTOR, 'a.mm-merch-panel ul.mm-category-list>li>h3')
+    NEW_ARRIVALS_PRODUCTS = (By.CSS_SELECTOR, 'a.mm-merch-panel>ul>li')
 
     def hover_add_to_cart_btn(self):
         add_to_cart_btn = self.find_element(*self.ADD_TO_CART_BTN)
@@ -62,6 +62,6 @@ class ProductPage(Page):
     def verify_new_arrivals_products(self):
         na_products = self.driver.find_elements(*self.NEW_ARRIVALS_PRODUCTS)
         for e in na_products:
-            assert 'Women' in e.text, f'Error message....'
+            assert 'See More' in e.text, f'Error message....'
 
 

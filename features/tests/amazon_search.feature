@@ -33,7 +33,7 @@ Feature: Amazon Search Test
     Given Open Amazon page
     When Select department by alias <departments>
     And Seasch for <search_query>
-#    Then Verify books department is selected
+    Then Verify <departments> department is selected
     Examples:
     |departments|search_query|
     |stripbooks |Faust       |
