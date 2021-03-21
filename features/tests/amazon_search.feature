@@ -29,8 +29,12 @@ Feature: Amazon Search Test
     Then Verify cart has 1 item
 
 
-  Scenario: User can select and search in a department
+  Scenario Outline: User can select and search in a department
     Given Open Amazon page
-    When Select department by alias stripbooks
-    And Seasch for Faust
-    Then Verify books department is selected
+    When Select department by alias <departments>
+    And Seasch for <search_query>
+#    Then Verify books department is selected
+    Examples:
+    |departments|search_query|
+    |stripbooks |Faust       |
+    |garden     |mug         |

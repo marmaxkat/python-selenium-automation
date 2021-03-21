@@ -11,6 +11,8 @@ class ProductPage(Page):
     SIZE_OPTION_0 = (By.ID, 'size_name_0')
     PRICE_BY_BOX = (By.ID, 'unifiedPrice_feature_div')
     COLOR_OPTION = (By.ID, 'color_name_0')
+    NEW_ARRIVALS_LINK = (By.CSS_SELECTOR, '#nav-subnav > a:nth-child(7)')
+    NEW_ARRIVALS_PRODUCTS = (By.CSS_SELECTOR, 'a.mm-merch-panel ul.mm-category-list>li>h3')
 
     def hover_add_to_cart_btn(self):
         add_to_cart_btn = self.find_element(*self.ADD_TO_CART_BTN)
@@ -40,6 +42,14 @@ class ProductPage(Page):
         from time import sleep
         sleep(5)
 
+    def hover_new_arrivals_link(self):
+        new_arrivals_link = self.find_element(*self.NEW_ARRIVALS_LINK)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(new_arrivals_link)
+        actions.perform()
+        from time import sleep
+        sleep(5)
+
 
     def verify_cart_count(self, expected_count):
         self.verify_text(expected_count, *self.CART)
@@ -47,5 +57,11 @@ class ProductPage(Page):
 
     def verify_size_selection_tooltip(self):
         self.wait_for_element_appear(*self.SIZE_TOOLTIP)
+
+
+    def verify_new_arrivals_products(self):
+        na_products = self.driver.find_elements(*self.NEW_ARRIVALS_PRODUCTS)
+        for e in na_products:
+            assert 'Women' in e.text, f'Error message....'
 
 

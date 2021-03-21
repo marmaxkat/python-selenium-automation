@@ -25,6 +25,11 @@ def hover_add_to_cart_btn(context):
     context.app.product_page.hover_add_to_cart_btn()
 
 
+@when('Hover over New Arrivals link')
+def hover_new_arrivals_link(context):
+    context.app.product_page.hover_new_arrivals_link()
+
+
 @when('Click on Add to cart button')
 def add_to_cart_btn_click(context):
     context.app.product_page.click_add_to_cart()
@@ -62,3 +67,8 @@ def verify_can_select_colors(context, color_list):
 @then('Verify size selection tooltip is shown')
 def verify_size_selection_tooltip(context):
     context.app.product_page.verify_size_selection_tooltip()
+
+
+@then('Verify users can see the deals')
+def verify_new_arrivals_products(context):
+    context.app.product_page.verify_new_arrivals_products()

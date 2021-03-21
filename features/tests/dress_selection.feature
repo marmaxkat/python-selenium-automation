@@ -11,3 +11,9 @@ Feature:Test for dress selection
     Given Open Amazon product B074TBCSC8 page
     When Hover over Add to Cart button
     Then Verify size selection tooltip is shown
+
+
+  Scenario: Users can see the deals
+    Given Open Amazon product B074TBCSC8 page
+    When Hover over New Arrivals link
+    Then Verify users can see the deals
